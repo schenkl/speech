@@ -47,7 +47,6 @@ def threaded(c):
 				rtn = play_warning(file_num)
 		except:
 			print('unable to call play_warning')
-
 	# connection closed 
 	c.close() 
 
