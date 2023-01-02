@@ -16,11 +16,11 @@ today = date.today()
 dt = datetime.now()
 
 # get weekday name
-print('day Name:', dt.strftime('%A'))
-print('month Name:', dt.strftime('%B'))
-print('date:', dt.strftime('%d'))
-print('hour:', dt.strftime('%H'))
-print('min:', dt.strftime('%M'))
+#print('day Name:', dt.strftime('%A'))
+#print('month Name:', dt.strftime('%B'))
+#print('date:', dt.strftime('%d'))
+#print('hour:', dt.strftime('%H'))
+#print('min:', dt.strftime('%M'))
 
 Day = dt.strftime('%A')
 Hour = dt.strftime('%A')
@@ -33,12 +33,12 @@ if Day[0] == '0':
     Day[1] = 0
 
 command = "/home/pi/sounds/tts-4.sh  today is " + Day + " " + Month + " " + Date 
-print(command)
+#print(command)
 os.system(command)
 
 
 command = "/home/pi/sounds/tts-4.sh  time is now " + Hour + " " + Min
-print(command)
+#print(command)
 os.system(command)
 
 
@@ -47,7 +47,7 @@ def get_value(device):
     ip = "192.168.1.122"
     port = 1234
     try:
-        print ("opening connection to 192.168.1.122 port 1234")
+        #print ("opening connection to 192.168.1.122 port 1234")
         s = socket.socket()
         s.settimeout(1)
         s.connect((ip,port))
@@ -61,9 +61,9 @@ def get_value(device):
             if len(msg) == 0:
                 return
             else:
-                print("msg: ",msg)
+                #print("msg: ",msg)
 		msgs = msg.split("\n")
-		print(msgs)
+		#print(msgs)
 		return(msgs[0])
     except:
         print("Fail in get_value")
@@ -76,9 +76,9 @@ device = "Kent_ext_temp"
 Kent_ext_temp = get_value(device)
 
 
-print("Sun_rise = ",Sun_rise)
-print("Sun_set = ",Sun_set)
-print("Kent_ext_temp",Kent_ext_temp)
+#print("Sun_rise = ",Sun_rise)
+#print("Sun_set = ",Sun_set)
+#print("Kent_ext_temp",Kent_ext_temp)
 
 dark = int(Sun_rise) + ((60*24) - int(Sun_set))
 light = (60*24) - dark 
@@ -87,6 +87,42 @@ light_hours = light / 60
 light_minutes = light % 60
 
 command = "/home/pi/sounds/tts-4.sh There are " + str(light_hours) + " hours " + str(light_minutes) + " minutes of daylight today "
-print(command)
+#print(command)
 os.system(command)
 
+Current_temperature = get_value("Kent_ext_temp")
+command = "/home/pi/sounds/tts-4.sh current temperature is " + str(Current_temperature) 
+os.system(command)
+
+#pdb.set_trace()
+Expected_Rain1 = get_value("Expected_Rain1")
+messages = Expected_Rain1.split(";")
+Expected_Rain1 = messages[6]
+Expected_Rain2 = get_value("Expected_Rain2")
+messages = Expected_Rain2.split(";")
+Expected_Rain2 = messages[6]
+Expected_Min_T = get_value("Expected_Min_T")
+messages = Expected_Min_T.split(";")
+Expected_Min_T = messages[6]
+Expected_Max_T = get_value("Expected_Max_T")
+messages = Expected_Max_T.split(";")
+Expected_Max_T = messages[6]
+
+#print("Expected_Rain1 = ",Expected_Rain1)
+#print("Expected_Rain2 = ",Expected_Rain2)
+#print("Expected_Min_T = ",Expected_Min_T)
+#print("Expected_Max_T = ",Expected_Max_T)
+
+command = "/home/pi/sounds/tts-4.sh the expected high temperature for today is " + str(Expected_Max_T) + " and the expected low temperature is " + str(Expected_Min_T)
+#print(command)
+os.system(command)
+
+#pdb.set_trace()
+
+if Expected_Rain1 == "0":
+    command = "/home/pi/sounds/tts-4.sh no rain is expected today "
+else:
+    command = "/home/pi/sounds/tts-4.sh rain is expected today of " + str(Expected_Rain1) + " hundreth of an inch "
+os.system(command)
+
+    
