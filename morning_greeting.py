@@ -1,9 +1,8 @@
 #!/usr/bin/python
 
-#hm	hour	min
-#Sun_rise
-#Kent_ext_temp
-#Sun_set
+#this was written for python 2.7 work need to be done to be python3 compatible
+#reserrected speak1 to Kent 1/2023 over new year with everyone getting covid
+# LUS
 
 import os
 import pdb
@@ -62,9 +61,9 @@ def get_value(device):
                 return
             else:
                 #print("msg: ",msg)
-		msgs = msg.split("\n")
+                msgs = msg.split("\n")
 		#print(msgs)
-		return(msgs[0])
+                return(msgs[0])
     except:
         print("Fail in get_value")
 
