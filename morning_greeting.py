@@ -30,6 +30,9 @@ Min = dt.strftime('%M')
 if Day[0] == '0':
     Day[0] = Day[1]
     Day[1] = 0
+if Hour[0] == '0':
+    hour = int(Hour)
+    Hour = str(hour)
 
 command = "/home/pi/sounds/tts-4.sh  today is " + Day + " " + Month + " " + Date 
 #print(command)
@@ -84,6 +87,14 @@ light = (60*24) - dark
 #pdb.set_trace()
 light_hours = light / 60
 light_minutes = light % 60
+
+sunrise_hour =int(Sun_rise) / 60
+sunrise_minutes = int(Sun_rise) % 60
+sunset_hour = int(Sun_set) / 60;
+sunset_minutes = int(Sun_set) % 60
+
+command = "/home/pi/sounds/tts-4.sh Sun rise is at " + str(sunrise_hour) + " " + str(sunset_minutes) + " and sun set is at " + str(sunset_hour) + " " + str(sunset_minutes)
+os.system(command)
 
 command = "/home/pi/sounds/tts-4.sh There are " + str(light_hours) + " hours " + str(light_minutes) + " minutes of daylight today "
 #print(command)

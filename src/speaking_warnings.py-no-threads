@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-#clock that rings chimes every i5 minutes
+#clock that rings chimes every 15 minutes
 #from schedule defined/uploadable
 
 #also daemon that speaks alerts sent from pi-2 send over port
