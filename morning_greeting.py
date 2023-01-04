@@ -101,8 +101,9 @@ command = "/home/pi/sounds/tts-4.sh There are " + str(light_hours) + " hours " +
 os.system(command)
 
 Current_temperature = get_value("Kent_ext_temp")
-command = "/home/pi/sounds/tts-4.sh current temperature is " + str(Current_temperature) 
-os.system(command)
+if Current_temperature < 110:
+    command = "/home/pi/sounds/tts-4.sh current temperature is " + str(Current_temperature) 
+    os.system(command)
 
 #pdb.set_trace()
 Expected_Rain1 = get_value("Expected_Rain1")
