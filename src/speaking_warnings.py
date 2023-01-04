@@ -78,7 +78,10 @@ def play_warning(file_num):
 		elif file_num == 12:
                         os.system("/usr/bin/aplay /home/pi/sounds/speech/12")
 		else:
-			print('Sorry, no file by that name')
+			#pdb.set_trace()
+			command = "/usr/bin/aplay /home/pi/sounds/speech/" + str(file_num)
+			print(command)
+			os.system(command)
 	except:
 		print('unable to play sound file')
 
