@@ -133,7 +133,7 @@ os.system(command)
 if Expected_Rain1 == "0":
     command = "/home/pi/sounds/tts-4.sh no rain is expected today "
 else:
-    command = "/home/pi/sounds/tts-4.sh rain is expected today of " + str(Expected_Rain1) + " hundreth of an inch "
+    command = "/home/pi/sounds/tts-4.sh probability of rain today is " + str(Expected_Rain1) + " percent "
 os.system(command)
 
     

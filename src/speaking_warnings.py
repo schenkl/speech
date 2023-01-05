@@ -53,35 +53,10 @@ def threaded(c):
 def play_warning(file_num):
 	print('play_warning: file_num: ',file_num)
 	try:
-		if file_num == 1:
-			os.system("/usr/bin/aplay /home/pi/sounds/speech/1")
-		elif file_num == 2:
-			os.system("/usr/bin/aplay /home/pi/sounds/speech/2")
-		elif file_num == 3:
-			os.system("/usr/bin/aplay /home/pi/sounds/speech/3")
-		elif file_num == 4:
-			os.system("/usr/bin/aplay /home/pi/sounds/speech/4")
-		elif file_num == 5:
-			os.system("/usr/bin/aplay /home/pi/sounds/speech/5")
-		elif file_num == 6:
-			os.system("/usr/bin/aplay /home/pi/sounds/speech/6")
-		elif file_num == 7:
-			os.system("/usr/bin/aplay /home/pi/sounds/speech/7")
-		elif file_num == 8:
-			os.system("/usr/bin/aplay /home/pi/sounds/speech/8")
-		elif file_num == 9:
-			os.system("/usr/bin/aplay /home/pi/sounds/speech/9")
-		elif file_num == 10:
-			os.system("/usr/bin/aplay /home/pi/sounds/speech/10")
-		elif file_num == 11:
-                        os.system("/usr/bin/aplay /home/pi/sounds/speech/11")
-		elif file_num == 12:
-                        os.system("/usr/bin/aplay /home/pi/sounds/speech/12")
-		else:
-			#pdb.set_trace()
-			command = "/usr/bin/aplay /home/pi/sounds/speech/" + str(file_num)
-			print(command)
-			os.system(command)
+		#pdb.set_trace()
+		command = "/usr/bin/aplay /home/pi/sounds/speech/" + str(file_num)
+		print(command)
+		os.system(command)
 	except:
 		print('unable to play sound file')
 
