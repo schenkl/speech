@@ -156,7 +156,9 @@ os.system(command)
 
 #pdb.set_trace()
 
-if Expected_Rain1 == "0":
+#print("Expected_Rain1: ",Expected_Rain1)
+#if Expected_Rain1 == "0":
+if "000" in Expected_Rain1:
     command = "/home/pi/sounds/tts-4.sh no rain is expected today "
 else:
     command = "/home/pi/sounds/tts-4.sh probability of rain today is " + str(Expected_Rain1) + " percent "
