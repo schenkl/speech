@@ -167,8 +167,11 @@ os.system(command)
 mqtt_error = get_value("Mqtt_dev_error")
 messages = mqtt_error.split(";")
 mqtt_error = messages[6]
+int_mqtt_error = int(mqtt_error)
+int_mqtt_error = int_mqtt_error & 3
 #print(mqtt_error)
-if mqtt_error == "2":
+#if mqtt_error == "2":
+if mqtt_error == 2:
 	command = ("/home/pi/sounds/tts-4.sh there are no M Q T T devices off line")
 else :
 	command = ("/home/pi/sounds/tts-4.sh there are some  M Q T T devices off line")
